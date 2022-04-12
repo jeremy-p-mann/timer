@@ -13,7 +13,6 @@ const BoopButton = () => {
 };
 
 function App() {
-  const [showSettings, setShowSettings] = useState(false);
   const [workMinutes, setWorkMinutes] = useState(1);
   const [breakMinutes, setBreakMinutes] = useState(1);
 
@@ -21,8 +20,6 @@ function App() {
     <main>
       <SettingsContext.Provider
         value={{
-          showSettings,
-          setShowSettings,
           workMinutes,
           breakMinutes,
           setWorkMinutes,
