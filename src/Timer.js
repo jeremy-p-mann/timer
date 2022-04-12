@@ -14,12 +14,11 @@ function Timer() {
   const settingsInfo = useContext(SettingsContext);
 
   const [isPaused, setIsPaused] = useState(true);
+  const isPausedRef = useRef(isPaused);
 
   const [mode, setMode] = useState("work"); // work/break/null
   const [secondsLeft, setSecondsLeft] = useState(0);
-
   const secondsLeftRef = useRef(secondsLeft);
-  const isPausedRef = useRef(isPaused);
   const modeRef = useRef(mode);
 
   function tick() {

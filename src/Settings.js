@@ -4,6 +4,7 @@ import SettingsContext from "./SettingsContext";
 import {useContext} from "react";
 
 
+// TODO: refactor to use styled components
 function Settings() {
   const settingsInfo = useContext(SettingsContext);
   return(
