@@ -14,6 +14,7 @@ function Timer() {
   const settingsInfo = useContext(SettingsContext);
 
   const [isPaused, setIsPaused] = useState(true);
+
   const [mode, setMode] = useState("work"); // work/break/null
   const [secondsLeft, setSecondsLeft] = useState(0);
 
@@ -69,10 +70,6 @@ function Timer() {
   if (seconds < 10) seconds = "0" + seconds;
 
   const [play] = useSound(boopSfx);
-  if (totalSeconds === 0) {
-    play();
-    console.log("play");
-  }
   useEffect(() => {
     if (secondsLeft === 0) {
       play();
