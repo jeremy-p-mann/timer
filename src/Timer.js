@@ -4,6 +4,8 @@ import PlayButton from "./PlayButton";
 import PauseButton from "./PauseButton";
 import { useContext, useState, useEffect, useRef } from "react";
 import SettingsContext from "./SettingsContext";
+import useSound from "use-sound";
+import boopSfx from "./sounds/invalid_keypress.mp3";
 
 const red = "#f54e4e";
 const green = "#4aec8c";
@@ -66,6 +68,18 @@ function Timer() {
   let seconds = secondsLeft % 60;
   if (seconds < 10) seconds = "0" + seconds;
 
+  const [play] = useSound(boopSfx);
+  if (totalSeconds === 0) {
+    play();
+    console.log("play");
+  }
+  useEffect(() => {
+    if (secondsLeft === 0) {
+      play();
+    }
+  }, [secondsLeft, play]);
+
+  // TODO: Split the progress timer from the progress bar
   return (
     <div>
       <CircularProgressbar

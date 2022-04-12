@@ -4,11 +4,18 @@ import Settings from "./Settings";
 import { useState } from "react";
 import SettingsContext from "./SettingsContext";
 
+import useSound from "use-sound";
+import boopSfx from "./sounds/invalid_keypress.mp3";
+
+const BoopButton = () => {
+  const [play] = useSound(boopSfx);
+  return <button onClick={play}>Boop!</button>;
+};
+
 function App() {
   const [showSettings, setShowSettings] = useState(false);
   const [workMinutes, setWorkMinutes] = useState(1);
   const [breakMinutes, setBreakMinutes] = useState(1);
-  console.log(workMinutes);
 
   return (
     <main>
@@ -25,6 +32,7 @@ function App() {
         <Timer />
         <Settings />
       </SettingsContext.Provider>
+      <BoopButton />
     </main>
   );
 }
