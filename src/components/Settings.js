@@ -1,6 +1,6 @@
 import ReactSlider from 'react-slider';
-import './css/slider.css'
-import SettingsContext from "./SettingsContext";
+import '../css/slider.css'
+import SettingsContext from "../SettingsContext";
 import {useContext} from "react";
 
 

@@ -3,9 +3,9 @@ import "react-circular-progressbar/dist/styles.css";
 import PlayButton from "./PlayButton";
 import PauseButton from "./PauseButton";
 import { useContext, useState, useEffect, useRef } from "react";
-import SettingsContext from "./SettingsContext";
+import SettingsContext from "../SettingsContext";
 import useSound from "use-sound";
-import boopSfx from "./sounds/invalid_keypress.mp3";
+import boopSfx from "../sounds/invalid_keypress.mp3";
 
 const red = "#f54e4e";
 const green = "#4aec8c";
@@ -21,26 +21,8 @@ function Timer() {
   const secondsLeftRef = useRef(secondsLeft);
   const modeRef = useRef(mode);
 
-  function tick() {
-    secondsLeftRef.current--;
-    setSecondsLeft(secondsLeftRef.current);
-  }
-
   useEffect(() => {
-    function switchMode() {
-      const nextMode = modeRef.current === "work" ? "break" : "work";
-      const nextSeconds =
-        (nextMode === "work"
-          ? settingsInfo.workMinutes
-          : settingsInfo.breakMinutes) * 60;
-
-      setMode(nextMode);
-      modeRef.current = nextMode;
-
-      setSecondsLeft(nextSeconds);
-      secondsLeftRef.current = nextSeconds;
-    }
-
+    console.log("effect run");
     secondsLeftRef.current = settingsInfo.workMinutes * 60;
     setSecondsLeft(secondsLeftRef.current);
 
@@ -49,10 +31,22 @@ function Timer() {
         return;
       }
       if (secondsLeftRef.current === 0) {
-        return switchMode();
+        // switch the mode
+        const nextMode = modeRef.current === "work" ? "break" : "work";
+        const nextSeconds =
+          (nextMode === "work"
+            ? settingsInfo.workMinutes
+            : settingsInfo.breakMinutes) * 60;
+
+        setMode(nextMode);
+        modeRef.current = nextMode;
+        setSecondsLeft(nextSeconds);
+        secondsLeftRef.current = nextSeconds;
+        return;
       }
 
-      tick();
+      secondsLeftRef.current--;
+      setSecondsLeft(secondsLeftRef.current);
     }, 1000);
 
     return () => clearInterval(interval);
