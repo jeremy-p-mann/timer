@@ -1,35 +1,25 @@
 import "./css/App.css";
-import Timer from "./components/Timer";
-import Settings from "./components/Settings";
 import { useState } from "react";
-import SettingsContext from "./SettingsContext";
-
-import useSound from "use-sound";
-import boopSfx from "./sounds/invalid_keypress.mp3";
-
-const BoopButton = () => {
-  const [play] = useSound(boopSfx);
-  return <button onClick={play}>Boop!</button>;
-};
 
 function App() {
-  const [workMinutes, setWorkMinutes] = useState(1);
-  const [breakMinutes, setBreakMinutes] = useState(1);
+  const defaultSeconds = {
+    work: 1,
+    rest: 1,
+  };
+  const defaultMode = "work";
+  const defaultSecondsLeft = defaultSeconds[defaultMode];
+  const defaultIsPaused = true
+
+  const [seconds, setSeconds] = useState(defaultSeconds);
+  const [mode, setMode] = useState(defaultMode);
+  const [timeLeft, setTimeLeft] = useState(defaultSecondsLeft);
+  const [paused, setIsPaused] = useState(defaultIsPaused);
 
   return (
     <main>
-      <SettingsContext.Provider
-        value={{
-          workMinutes,
-          breakMinutes,
-          setWorkMinutes,
-          setBreakMinutes,
-        }}
-      >
-        <Timer />
-        <Settings />
-      </SettingsContext.Provider>
-      <BoopButton />
+      <div>work second {seconds.work}</div>
+      <div>rest second {seconds.rest}</div>
+      <div>time left {timeLeft}</div>
     </main>
   );
 }
