@@ -23,7 +23,6 @@ function Timer() {
   const modeRef = useRef(mode);
 
   useEffect(() => {
-    console.log("effect run");
     secondsLeftRef.current = settingsInfo.workMinutes * 60;
     setSecondsLeft(secondsLeftRef.current);
 
