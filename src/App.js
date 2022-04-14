@@ -46,15 +46,17 @@ function App() {
       modeRef.current = new_mode;
       play();
     }
-    if (!isPaused) {
-      setTimeout(() => {
-        setSecondsLeft(secondsLeft - 1);
-      }, 1000);
-    }
   }, [secondsLeft, isPaused, play]);
 
   useEffect(() => {
-    return;
+    const interval = setInterval(() => {
+      if (!isPaused) {
+        setSecondsLeft((s) => {
+          return s - 1;
+        });
+      }
+    }, 1000);
+    return () => clearInterval(interval);
   }, [isPaused]);
 
   useEffect(() => {
@@ -67,7 +69,6 @@ function App() {
 
   return (
     <main>
-
       <SecondsProgressIcon
         secondsLeft={secondsLeft}
         workSeconds={workSeconds}
