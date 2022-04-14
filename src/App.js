@@ -1,7 +1,8 @@
 import "./css/App.css";
 import { useState } from "react";
 import PausePlayButton from "./components/PausePlayButton";
-import Settings from "./components/Settings";
+import SecondsSettings from "./components/Settings";
+import NSessionsSettings from "./components/nSessionsSettings";
 import ProgressIcon from "./components/ProgressIcon";
 import { useEffect, useRef } from "react";
 import useSound from "use-sound";
@@ -73,9 +74,18 @@ function App() {
         nSessions={nSessions}
       />
       <PausePlayButton isPaused={isPaused} setIsPaused={setIsPaused} />
-      <Settings seconds={workSeconds} setSeconds={setWorkSeconds} mode="work" />
-      <Settings seconds={restSeconds} setSeconds={setRestSeconds} mode="rest" />
-      <Settings seconds={secondsLeft} setSeconds={setSecondsLeft} mode="left" />
+      <SecondsSettings
+        seconds={workSeconds}
+        setSeconds={setWorkSeconds}
+        mode="work"
+      />
+      <SecondsSettings
+        seconds={restSeconds}
+        setSeconds={setRestSeconds}
+        mode="rest"
+      />
+      <SecondsSettings seconds={secondsLeft} setSeconds={setSecondsLeft} mode="left" />
+            <NSessionsSettings nSessions={nSessions} SetNSessions={setNSessions}/>
     </main>
   );
 }

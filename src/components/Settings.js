@@ -2,7 +2,7 @@ import ReactSlider from "react-slider";
 import "../css/slider.css";
 
 // TODO: refactor to use styled components
-function Settings({ seconds, setSeconds, mode }) {
+function SecondsSettings({ seconds, setSeconds, mode }) {
   const className = (mode === 'work') ? 'slider' : 'slider green'
   return (
     <div style={{ textAlign: "left" }}>
@@ -22,4 +22,4 @@ function Settings({ seconds, setSeconds, mode }) {
   );
 }
 
-export default Settings;
+export default SecondsSettings;
