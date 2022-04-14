@@ -3,7 +3,8 @@ import "../css/slider.css";
 
 // TODO: refactor to use styled components
 function NSessionsSettings({ nSessions, SetNSessions }) {
-  const className = "slider";
+  const className = "slider yellow";
+    const yellow = "yellow"
   return (
     <div style={{ textAlign: "left" }}>
       <label>Number of Sessions: {nSessions} </label>

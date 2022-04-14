@@ -54,6 +54,10 @@ function App() {
   }, [secondsLeft, isPaused, play]);
 
   useEffect(() => {
+    return;
+  }, [isPaused]);
+
+  useEffect(() => {
     const newSeconds = mode === "work" ? workSeconds : restSeconds;
     setTotalSeconds(newSeconds);
     totalSecondsRef.current = newSeconds;
@@ -63,16 +67,13 @@ function App() {
 
   return (
     <main>
-      <div>{isPaused ? "paused" : "playing"}</div>
-      <div>{mode}</div>
-      <div>sessions{nSessions}</div>
 
       <SecondsProgressIcon
         secondsLeft={secondsLeft}
         workSeconds={workSeconds}
         restSeconds={restSeconds}
         mode={mode}
-        nSessions={nSessionsLeft}
+        nSessionsLeft={nSessionsLeft}
       />
       <SessionsProgressIcon
         nSessions={nSessions}
