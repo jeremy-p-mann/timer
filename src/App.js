@@ -12,7 +12,7 @@ import boopSfx from "./sounds/invalid_keypress.mp3";
 function App() {
   const defaultSeconds = {
     work: 20 * 60,
-    rest: 10 * 60,
+    rest: 1 * 60,
   };
   const defaultMode = "work";
   const defaultSecondsLeft = defaultSeconds[defaultMode];
@@ -30,34 +30,34 @@ function App() {
   const [nSessionsLeft, setNSessionsLeft] = useState(defaultNSessions);
 
   const modeRef = useRef(defaultMode);
-  const nSessionsRef = useRef(defaultNSessions);
   const totalSecondsRef = useRef(defaultSecondsLeft);
 
   const [play] = useSound(boopSfx);
+    // when there are 0 seconds left: 
+  // play sound, change mode, decrement nSessions
   useEffect(() => {
     if (secondsLeft === 0) {
       if (modeRef.current === "rest") {
-        nSessionsRef.current = nSessionsRef.current - 1;
-        const nSessionsNew = nSessionsRef.current;
-        setNSessionsLeft(nSessionsNew);
+        setNSessionsLeft((n) => {
+          return n - 1;
+        });
       }
-      const new_mode = modeRef.current === "work" ? "rest" : "work";
-      setMode(new_mode);
-      modeRef.current = new_mode;
+      setMode((m) => {return m === 'work' ? 'rest' : 'work'});
       play();
     }
-  }, [secondsLeft, isPaused, play]);
+  }, [secondsLeft, play]);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!isPaused) {
+      if (!isPaused && nSessionsLeft > 0) {
+        console.log(nSessionsLeft);
         setSecondsLeft((s) => {
           return s - 1;
         });
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, [isPaused]);
+  }, [isPaused, nSessionsLeft]);
 
   useEffect(() => {
     const newSeconds = mode === "work" ? workSeconds : restSeconds;
@@ -91,12 +91,12 @@ function App() {
         setSeconds={setRestSeconds}
         mode="rest"
       />
+      <NSessionsSettings nSessions={nSessions} SetNSessions={setNSessions} />
       <SecondsSettings
         seconds={secondsLeft}
         setSeconds={setSecondsLeft}
         mode="left"
       />
-      <NSessionsSettings nSessions={nSessions} SetNSessions={setNSessions} />
     </main>
   );
 }
