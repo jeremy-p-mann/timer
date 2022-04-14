@@ -73,7 +73,14 @@ function App() {
     setSecondsLeft(newSeconds);
     return;
   }, [mode, workSeconds, restSeconds]);
+  const reset = () => {
+    setMode("work");
+    setNSessionsLeft(nSessions);
+  };
 
+  // the reset button should:
+  // change the number of sessions left to nSessions
+  // change the mode to work (which will change the seconds left via cascade)
   return (
     <main>
       <SecondsProgressIcon
@@ -88,6 +95,9 @@ function App() {
         nSessionsLeft={nSessionsLeft}
       />
       <PausePlayButton isPaused={isPaused} setIsPaused={setIsPaused} />
+      <button onClick={reset}>
+        <h2> Reset </h2>
+      </button>
       <SecondsSettings
         seconds={workSeconds}
         setSeconds={setWorkSeconds}
