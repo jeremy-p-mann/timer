@@ -29,12 +29,13 @@ function App() {
   const [totalSeconds, setTotalSeconds] = useState(defaultSecondsLeft);
   const [nSessionsLeft, setNSessionsLeft] = useState(defaultNSessions);
 
+  // TODO: remove these
   const modeRef = useRef(defaultMode);
   const totalSecondsRef = useRef(defaultSecondsLeft);
 
   const [play] = useSound(boopSfx);
-    // when there are 0 seconds left: 
-  // play sound, change mode, decrement nSessions
+  // when there are 0 seconds left:
+  // play sound, change mode, decrement sess
   useEffect(() => {
     if (secondsLeft === 0) {
       if (modeRef.current === "rest") {
@@ -42,11 +43,15 @@ function App() {
           return n - 1;
         });
       }
-      setMode((m) => {return m === 'work' ? 'rest' : 'work'});
+      setMode((m) => {
+        return m === "work" ? "rest" : "work";
+      });
+      modeRef.current = modeRef.current === "work" ? "rest" : "work";
       play();
     }
   }, [secondsLeft, play]);
 
+  // increment the timer where there are 0 sessions left or not paused
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isPaused && nSessionsLeft > 0) {
@@ -59,6 +64,8 @@ function App() {
     return () => clearInterval(interval);
   }, [isPaused, nSessionsLeft]);
 
+  // When the mode changes, change the total seconds to
+  // the total and current seconds to whaever the mode is
   useEffect(() => {
     const newSeconds = mode === "work" ? workSeconds : restSeconds;
     setTotalSeconds(newSeconds);
