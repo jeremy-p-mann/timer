@@ -1,7 +1,7 @@
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-const ProgressIcon = ({
+const SecondsProgressIcon = ({
   mode,
   workSeconds,
   restSeconds,
@@ -38,4 +38,4 @@ const ProgressIcon = ({
   );
 };
 
-export default ProgressIcon;
+export default SecondsProgressIcon;

@@ -3,7 +3,8 @@ import { useState } from "react";
 import PausePlayButton from "./components/PausePlayButton";
 import SecondsSettings from "./components/Settings";
 import NSessionsSettings from "./components/nSessionsSettings";
-import ProgressIcon from "./components/ProgressIcon";
+import SecondsProgressIcon from "./components/SecondsProgressIcon";
+import SessionsProgressIcon from "./components/SessionsProgressIcon";
 import { useEffect, useRef } from "react";
 import useSound from "use-sound";
 import boopSfx from "./sounds/invalid_keypress.mp3";
@@ -26,7 +27,7 @@ function App() {
   const [secondsLeft, setSecondsLeft] = useState(defaultSecondsLeft);
 
   const [totalSeconds, setTotalSeconds] = useState(defaultSecondsLeft);
-  const [sessionsLeft, setsessionsLeft] = useState(defaultNSessions);
+  const [nSessionsLeft, setNSessionsLeft] = useState(defaultNSessions);
 
   const modeRef = useRef(defaultMode);
   const nSessionsRef = useRef(defaultNSessions);
@@ -38,7 +39,7 @@ function App() {
       if (modeRef.current === "rest") {
         nSessionsRef.current = nSessionsRef.current - 1;
         const nSessionsNew = nSessionsRef.current;
-        setNSessions(nSessionsNew);
+        setNSessionsLeft(nSessionsNew);
       }
       const new_mode = modeRef.current === "work" ? "rest" : "work";
       setMode(new_mode);
@@ -66,12 +67,16 @@ function App() {
       <div>{mode}</div>
       <div>sessions{nSessions}</div>
 
-      <ProgressIcon
+      <SecondsProgressIcon
         secondsLeft={secondsLeft}
         workSeconds={workSeconds}
         restSeconds={restSeconds}
         mode={mode}
+        nSessions={nSessionsLeft}
+      />
+      <SessionsProgressIcon
         nSessions={nSessions}
+        nSessionsLeft={nSessionsLeft}
       />
       <PausePlayButton isPaused={isPaused} setIsPaused={setIsPaused} />
       <SecondsSettings
@@ -84,8 +89,12 @@ function App() {
         setSeconds={setRestSeconds}
         mode="rest"
       />
-      <SecondsSettings seconds={secondsLeft} setSeconds={setSecondsLeft} mode="left" />
-            <NSessionsSettings nSessions={nSessions} SetNSessions={setNSessions}/>
+      <SecondsSettings
+        seconds={secondsLeft}
+        setSeconds={setSecondsLeft}
+        mode="left"
+      />
+      <NSessionsSettings nSessions={nSessions} SetNSessions={setNSessions} />
     </main>
   );
 }
