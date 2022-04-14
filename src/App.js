@@ -55,7 +55,6 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isPaused && nSessionsLeft > 0) {
-        console.log(nSessionsLeft);
         setSecondsLeft((s) => {
           return s - 1;
         });
