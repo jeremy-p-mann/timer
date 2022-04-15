@@ -15,6 +15,12 @@
 .slider.green{
     border: 2px solid var(--green);
 }
+.slider.yellow{
+    border: 2px solid var(--yellow);
+}
 .slider.green .thumb{
     background-color: var(--green);
+}
+.slider.yellow .thumb{
+    background-color: var(--yellow);
 }
