@@ -6,7 +6,7 @@ const SecondsProgressIcon = ({
   workSeconds,
   restSeconds,
   secondsLeft,
-  nSessionsLeft
+  nRoundsLeft
 }) => {
   const red = "#f54e4e";
   const green = "#4aec8c";
@@ -20,7 +20,7 @@ const SecondsProgressIcon = ({
   let color = mode === "work" ? red : green;
   let text = minutes_display + ":" + seconds_display;
 
-  if (nSessionsLeft === 0) {
+  if (nRoundsLeft === 0) {
     color = "orange";
     text = "done";
   }

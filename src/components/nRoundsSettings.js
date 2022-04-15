@@ -2,18 +2,18 @@ import ReactSlider from "react-slider";
 import "../css/slider.css";
 
 // TODO: refactor to use styled components
-function NSessionsSettings({ nSessions, SetNSessions }) {
+function NRoundsSettings({ nRounds, SetNRounds }) {
   const className = "slider yellow";
     const yellow = "yellow"
   return (
     <div style={{ textAlign: "left" }}>
-      <label>Number of Sessions: {nSessions} </label>
+      <label>Number of Rounds: {nRounds} </label>
       <ReactSlider
         className={className}
         thumbClassName={"thumb"}
         trackClassName={"track"}
-        value={nSessions}
-        onChange={(newValue) => SetNSessions(newValue)}
+        value={nRounds}
+        onChange={(newValue) => SetNRounds(newValue)}
         min={1}
         max={20}
       />
@@ -21,4 +21,4 @@ function NSessionsSettings({ nSessions, SetNSessions }) {
   );
 }
 
-export default NSessionsSettings;
+export default NRoundsSettings;

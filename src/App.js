@@ -2,9 +2,9 @@ import "./css/App.css";
 import { useState } from "react";
 import PausePlayButton from "./components/PausePlayButton";
 import SecondsSettings from "./components/SecondsSettings";
-import NSessionsSettings from "./components/nSessionsSettings";
+import NRoundsSettings from "./components/nRoundsSettings";
 import SecondsProgressIcon from "./components/SecondsProgressIcon";
-import SessionsProgressIcon from "./components/SessionsProgressIcon";
+import RoundsProgressIcon from "./components/RoundsProgressIcon";
 import { useEffect, useRef } from "react";
 import useSound from "use-sound";
 import boopSfx from "./sounds/invalid_keypress.mp3";
@@ -17,17 +17,17 @@ function App() {
   const defaultMode = "work";
   const defaultSecondsLeft = defaultSeconds[defaultMode];
   const defaultIsPaused = true;
-  const defaultNSessions = 2;
+  const defaultNRounds = 2;
 
   const [isPaused, setIsPaused] = useState(defaultIsPaused);
-  const [nSessions, setNSessions] = useState(defaultNSessions);
+  const [nRounds, setNRounds] = useState(defaultNRounds);
   const [workSeconds, setWorkSeconds] = useState(defaultSeconds.work);
   const [restSeconds, setRestSeconds] = useState(defaultSeconds.rest);
   const [mode, setMode] = useState(defaultMode);
   const [secondsLeft, setSecondsLeft] = useState(defaultSecondsLeft);
 
   const [totalSeconds, setTotalSeconds] = useState(defaultSecondsLeft);
-  const [nSessionsLeft, setNSessionsLeft] = useState(defaultNSessions);
+  const [nRoundsLeft, setNRoundsLeft] = useState(defaultNRounds);
 
   // TODO: remove these
   const modeRef = useRef(defaultMode);
@@ -39,7 +39,7 @@ function App() {
   useEffect(() => {
     if (secondsLeft === 0) {
       if (modeRef.current === "rest") {
-        setNSessionsLeft((n) => {
+        setNRoundsLeft((n) => {
           return n - 1;
         });
       }
@@ -51,17 +51,17 @@ function App() {
     }
   }, [secondsLeft, play]);
 
-  // increment the timer where there are 0 sessions left or not paused
+  // increment the timer where there are 0 rounds left or not paused
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!isPaused && nSessionsLeft > 0) {
+      if (!isPaused && nRoundsLeft > 0) {
         setSecondsLeft((s) => {
           return s - 1;
         });
       }
     }, 1000);
     return () => clearInterval(interval);
-  }, [isPaused, nSessionsLeft]);
+  }, [isPaused, nRoundsLeft]);
 
   // When the mode changes, change the total seconds to
   // the total and current seconds to whaever the mode is
@@ -74,11 +74,11 @@ function App() {
   }, [mode, workSeconds, restSeconds]);
   const reset = () => {
     setMode("work");
-    setNSessionsLeft(nSessions);
+    setNRoundsLeft(nRounds);
   };
 
   // the reset button should:
-  // change the number of sessions left to nSessions
+  // change the number of rounds left to nRounds
   // change the mode to work (which will change the seconds left via cascade)
   return (
     <main>
@@ -87,11 +87,11 @@ function App() {
         workSeconds={workSeconds}
         restSeconds={restSeconds}
         mode={mode}
-        nSessionsLeft={nSessionsLeft}
+        nRoundsLeft={nRoundsLeft}
       />
-      <SessionsProgressIcon
-        nSessions={nSessions}
-        nSessionsLeft={nSessionsLeft}
+      <RoundsProgressIcon
+        nRounds={nRounds}
+        nRoundsLeft={nRoundsLeft}
       />
       <PausePlayButton isPaused={isPaused} setIsPaused={setIsPaused} />
       <button onClick={reset}>
@@ -107,7 +107,7 @@ function App() {
         setSeconds={setRestSeconds}
         mode="rest"
       />
-      <NSessionsSettings nSessions={nSessions} SetNSessions={setNSessions} />
+      <NRoundsSettings nRounds={nRounds} SetNRounds={setNRounds} />
       <SecondsSettings
         seconds={secondsLeft}
         setSeconds={setSecondsLeft}
