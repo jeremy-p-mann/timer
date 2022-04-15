@@ -16,7 +16,7 @@ function SecondsSettings({ seconds, setSeconds, mode }) {
                 newValue => setSeconds(newValue * 60)
             }
         min={0}
-        max={120}
+        max={20}
       />
     </div>
   );

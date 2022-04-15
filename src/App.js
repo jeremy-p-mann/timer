@@ -11,7 +11,7 @@ import boopSfx from "./sounds/invalid_keypress.mp3";
 
 function App() {
   const defaultSeconds = {
-    work: 20 * 60,
+    work: 5 * 60,
     rest: 1 * 60,
   };
   const defaultMode = "work";
