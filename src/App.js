@@ -1,7 +1,7 @@
 import "./css/App.css";
 import { useState } from "react";
 import PausePlayButton from "./components/PausePlayButton";
-import SecondsSettings from "./components/Settings";
+import SecondsSettings from "./components/SecondsSettings";
 import NSessionsSettings from "./components/nSessionsSettings";
 import SecondsProgressIcon from "./components/SecondsProgressIcon";
 import SessionsProgressIcon from "./components/SessionsProgressIcon";
