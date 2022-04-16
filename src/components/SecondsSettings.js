@@ -5,7 +5,7 @@ import "../css/slider.css";
 function SecondsSettings({ seconds, setSeconds, mode }) {
   const className = (mode === 'work') ? 'slider' : 'slider green'
   return (
-    <div style={{ textAlign: "left" }}>
+    <div style={{ textAlign: "center" }}>
       <label>{mode}: {seconds / 60} minutes</label>
       <ReactSlider
         className={className}
