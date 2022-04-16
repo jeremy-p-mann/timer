@@ -80,7 +80,9 @@ function App() {
     return;
   }, [mode, workSeconds, restSeconds]);
   const reset = () => {
+    console.log("Rest");
     setMode("work");
+    setSecondsLeft(workSeconds);
     setNRoundsLeft(nRounds);
   };
 
