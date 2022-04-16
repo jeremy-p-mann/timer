@@ -7,7 +7,7 @@ const SecondsProgressIcon = ({ nRoundsLeft, nRounds }) => {
   const isDone = nRoundsLeft === 0;
   const color = "yellow";
   const percentage = (nRoundsLeft / nRounds) * 100;
-  const text = isDone ? "0" : nRoundsLeft;
+  const text = isDone ? "0" : nRoundsLeft.toString();
   const baseBgColor = isDone ? "orange" : "white";
 
   return (
