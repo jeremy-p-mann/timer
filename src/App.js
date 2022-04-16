@@ -63,6 +63,13 @@ function App() {
     return () => clearInterval(interval);
   }, [isPaused, nRoundsLeft]);
 
+  // reset the number of rounds left when the user changes the
+  // number of rounds
+  useEffect(() => {
+    setNRoundsLeft(nRounds);
+    return;
+  }, [nRounds]);
+
   // When the mode changes, change the total seconds to
   // the total and current seconds to whaever the mode is
   useEffect(() => {
@@ -89,10 +96,7 @@ function App() {
         mode={mode}
         nRoundsLeft={nRoundsLeft}
       />
-      <RoundsProgressIcon
-        nRounds={nRounds}
-        nRoundsLeft={nRoundsLeft}
-      />
+      <RoundsProgressIcon nRounds={nRounds} nRoundsLeft={nRoundsLeft} />
       <PausePlayButton isPaused={isPaused} setIsPaused={setIsPaused} />
       <button onClick={reset}>
         <h2> Reset </h2>

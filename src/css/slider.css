@@ -1,26 +1,29 @@
-.slider{
-    height: 40px;
-    border: 2px solid var(--red);
-    border-radius: 20px;
+.slider {
+  height: 40px;
+  border: 2px solid var(--red);
+  border-radius: 20px;
 }
 
-.thumb{
-    background-color: var(--red);
-    cursor:pointer;
-    width:40px;
-    height: 40px;
-    border-radius: 20px;
+.thumb {
+  background-color: var(--red);
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
 }
 
-.slider.green{
-    border: 2px solid var(--green);
+.MuiToggleButtonGroup-root {
+  background-color: yellow;
 }
-.slider.yellow{
-    border: 2px solid var(--yellow);
+.slider.green {
+  border: 2px solid var(--green);
 }
-.slider.green .thumb{
-    background-color: var(--green);
+.slider.yellow {
+  border: 2px solid var(--yellow);
 }
-.slider.yellow .thumb{
-    background-color: var(--yellow);
+.slider.green .thumb {
+  background-color: var(--green);
+}
+.slider.yellow .thumb {
+  background-color: var(--yellow);
 }

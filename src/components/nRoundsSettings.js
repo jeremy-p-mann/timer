@@ -1,22 +1,29 @@
-import ReactSlider from "react-slider";
 import "../css/slider.css";
+import { useState } from "react";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import styled from "styled-components";
 
 // TODO: refactor to use styled components
 function NRoundsSettings({ nRounds, SetNRounds }) {
-  const className = "slider yellow";
-    const yellow = "yellow"
+  const handleRounds = (event, newRounds) => {
+    SetNRounds(newRounds);
+  };
+
   return (
-    <div style={{ textAlign: "left" }}>
-      <label>Number of Rounds: {nRounds} </label>
-      <ReactSlider
-        className={className}
-        thumbClassName={"thumb"}
-        trackClassName={"track"}
-        value={nRounds}
-        onChange={(newValue) => SetNRounds(newValue)}
-        min={1}
-        max={20}
-      />
+    <div style={{ align: "center" }}>
+      <label>Rounds</label>
+      <ToggleButtonGroup
+        value={nRounds.toString()}
+        exclusive
+        onChange={handleRounds}
+      >
+        <ToggleButton value="1">1</ToggleButton>
+        <ToggleButton value="2">2</ToggleButton>
+        <ToggleButton value="3">3</ToggleButton>
+        <ToggleButton value="4">4</ToggleButton>
+        <ToggleButton value="5">5</ToggleButton>
+      </ToggleButtonGroup>
     </div>
   );
 }
