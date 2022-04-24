@@ -8,7 +8,7 @@ import RoundsProgressIcon from "./components/RoundsProgressIcon";
 import Reset from "./components/Reset";
 import { useEffect, useRef } from "react";
 import useSound from "use-sound";
-import boopSfx from "./sounds/invalid_keypress.mp3";
+import transitionSound from "./sounds/spaghetti.mp3";
 
 function App() {
   const defaultSeconds = {
@@ -34,7 +34,7 @@ function App() {
   const modeRef = useRef(defaultMode);
   const totalSecondsRef = useRef(defaultSecondsLeft);
 
-  const [play] = useSound(boopSfx);
+  const [play] = useSound(transitionSound);
   // when there are 0 seconds left:
   // play sound, change mode, decrement sess
   useEffect(() => {
