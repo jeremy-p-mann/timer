@@ -8,7 +8,6 @@ const SecondsProgressIcon = ({
   secondsLeft,
   nRoundsLeft,
 }) => {
-
   let className = mode === "work" ? "progressbar" : "progressbar recovery";
 
   const totalSeconds = mode === "work" ? workSeconds : restSeconds;
@@ -25,7 +24,12 @@ const SecondsProgressIcon = ({
   }
 
   return (
-    <CircularProgressbar value={percentage} text={text} className={className} />
+    <CircularProgressbar
+      value={percentage}
+      text={text}
+      className={className}
+      counterClockwise={true}
+    />
   );
 };
 
