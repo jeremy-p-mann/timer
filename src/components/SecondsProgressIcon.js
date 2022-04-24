@@ -8,12 +8,8 @@ const SecondsProgressIcon = ({
   secondsLeft,
   nRoundsLeft,
 }) => {
-  const blue = "#f54e4e";
-  const green = "#4aec8c";
-  const orange = "orange";
-  let color = mode === "work" ? blue : green;
-  let className = mode === "work" ? 'progressbar' : 'progressbar recovery';
 
+  let className = mode === "work" ? "progressbar" : "progressbar recovery";
 
   const totalSeconds = mode === "work" ? workSeconds : restSeconds;
   let percentage = Math.round((secondsLeft / totalSeconds) * 100);
@@ -23,19 +19,13 @@ const SecondsProgressIcon = ({
   if (seconds_display < 10) seconds_display = "0" + seconds_display;
   let text = minutes_display + ":" + seconds_display;
 
-
-
   if (nRoundsLeft === 0) {
-    color = orange;
+    className = "progressbar done";
     text = "done";
   }
 
   return (
-    <CircularProgressbar
-      value={percentage}
-      text={text}
-      className={className}
-    />
+    <CircularProgressbar value={percentage} text={text} className={className} />
   );
 };
 
