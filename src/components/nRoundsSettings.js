@@ -1,8 +1,6 @@
 import "../css/slider.css";
-import { useState } from "react";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import styled from "styled-components";
 
 // TODO: refactor to use styled components
 function NRoundsSettings({ nRounds, SetNRounds }) {

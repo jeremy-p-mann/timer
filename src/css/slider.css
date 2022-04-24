@@ -13,9 +13,15 @@
 }
 
 .MuiToggleButtonGroup-root {
-  background-color: #FAEFF8;
+  background-color: var(--greyPink);
 }
 
+button.MuiToggleButton-root{
+  background-color: var(--greyPinkDark);
+}
+button.MuiToggleButton-root.Mui-selected {
+  background-color: var(--greyPink);
+}
 .slider.recovery {
   border: 2px solid var(--green);
 }
