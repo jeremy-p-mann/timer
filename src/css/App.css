@@ -2,8 +2,9 @@
   --green: #8be9c8;
   --blue: #a5f1fd;
   --greyPink: #faeff8;
-  --greyPinkDark: #B0ADB5;
-  --red: #C26240;
+  --greyPinkDark: #b0adb5;
+  --red: #c26240;
+  --background: #4b5158;
 }
 
 body {
@@ -15,6 +16,7 @@ main {
   max-width: 340px;
   margin: 0 auto;
   text-align: center;
+  display: grid;
 }
 
 button {
@@ -54,7 +56,7 @@ label {
   stroke: var(--blue);
 }
 .CircularProgressbar.progressbar .CircularProgressbar-trail {
-  stroke: var(--blue);
+  stroke: var(--greyPinkDark);
 }
 
 .CircularProgressbar.progressbar.recovery .CircularProgressbar-text {
@@ -63,16 +65,10 @@ label {
 .CircularProgressbar.progressbar.recovery .CircularProgressbar-path {
   stroke: var(--green);
 }
-.CircularProgressbar.progressbar.recovery .CircularProgressbar-trail {
-  stroke: var(--green);
-}
 
 .CircularProgressbar.progressbar.done .CircularProgressbar-text {
   fill: var(--greyPink);
 }
 .CircularProgressbar.progressbar.done .CircularProgressbar-path {
-  stroke: var(--greyPink);
-}
-.CircularProgressbar.progressbar.done .CircularProgressbar-trail {
   stroke: var(--greyPink);
 }
