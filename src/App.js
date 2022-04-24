@@ -5,6 +5,7 @@ import SecondsSettings from "./components/SecondsSettings";
 import NRoundsSettings from "./components/nRoundsSettings";
 import SecondsProgressIcon from "./components/SecondsProgressIcon";
 import RoundsProgressIcon from "./components/RoundsProgressIcon";
+import Reset from "./components/Reset";
 import { useEffect, useRef } from "react";
 import useSound from "use-sound";
 import boopSfx from "./sounds/invalid_keypress.mp3";
@@ -100,9 +101,13 @@ function App() {
       />
       <RoundsProgressIcon nRounds={nRounds} nRoundsLeft={nRoundsLeft} />
       <PausePlayButton isPaused={isPaused} setIsPaused={setIsPaused} />
-      <button onClick={reset}>
-        <h2> Reset </h2>
-      </button>
+      <Reset
+        setMode={setMode}
+        setSecondsLeft={setSecondsLeft}
+        setNRoundsLeft={setNRoundsLeft}
+        workSeconds={workSeconds}
+        nRounds={nRounds}
+      />
       <SecondsSettings
         seconds={workSeconds}
         setSeconds={setWorkSeconds}
