@@ -1,14 +1,15 @@
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import ProgressBar from "@ramonak/react-progress-bar";
 
 import "react-circular-progressbar/dist/styles.css";
 
-const SecondsProgressIcon = ({ nRoundsLeft, nRounds }) => {
+const RoundsProgressIcon = ({ nRoundsLeft, nRounds }) => {
   const isDone = nRoundsLeft === 0;
-  const color = "yellow";
+  const color = "#FAEFF8";
+  const opaque_color = "rgba(#FAEFF8, 0.75))";
+
   const percentage = (nRoundsLeft / nRounds) * 100;
   const text = isDone ? "0" : nRoundsLeft.toString();
-  const baseBgColor = isDone ? "orange" : "white";
+  const baseBgColor = isDone ? "orange" : opaque_color;
 
   return (
     <div style={{ paddingTop: "2rem" }}>
@@ -24,4 +25,4 @@ const SecondsProgressIcon = ({ nRoundsLeft, nRounds }) => {
   );
 };
 
-export default SecondsProgressIcon;
+export default RoundsProgressIcon;

@@ -1,11 +1,11 @@
 .slider {
   height: 40px;
-  border: 2px solid var(--red);
+  border: 2px solid var(--blue);
   border-radius: 20px;
 }
 
 .thumb {
-  background-color: var(--red);
+  background-color: var(--blue);
   cursor: pointer;
   width: 40px;
   height: 40px;
@@ -13,17 +13,12 @@
 }
 
 .MuiToggleButtonGroup-root {
-  background-color: yellow;
+  background-color: #FAEFF8;
 }
-.slider.green {
+
+.slider.recovery {
   border: 2px solid var(--green);
 }
-.slider.yellow {
-  border: 2px solid var(--yellow);
-}
-.slider.green .thumb {
+.slider.recovery .thumb {
   background-color: var(--green);
-}
-.slider.yellow .thumb {
-  background-color: var(--yellow);
 }

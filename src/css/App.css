@@ -1,46 +1,77 @@
-:root{
-  --red: #f54e4e;
-  --green: #4aec8c;
-  --yellow: yellow;
+:root {
+  --green: #8be9c8;
+  --blue: #a5f1fd;
+  --greyPink: #faeff8;
+  --red: #C26240;
 }
 
-body{
-  background-color: #30384b;
+body {
+  background-color: #4b5158;
   color: #eee;
 }
-main{
+main {
   padding-top: 50px;
   max-width: 340px;
   margin: 0 auto;
   text-align: center;
 }
 
-button{
+button {
   background-color: transparent;
-  color: rgba(255,255,255,0.8);
-  border:0;
+  color: rgba(255, 255, 255, 0.8);
+  border: 0;
   display: inline-block;
   width: 100px;
   cursor: pointer;
 }
 
-button.with-text{
+button.with-text {
   width: auto;
-  background-color:rgba(255,255,255,0.1);
-  border-radius:10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
   padding: 10px 20px;
   font-size: 1.4rem;
   line-height: 36px;
 }
-button.with-text svg{
+button.with-text svg {
   width: 36px;
-  float:left;
+  float: left;
   margin-right: 5px;
 }
 
-label{
-  display:block;
+label {
+  display: block;
   margin-bottom: 10px;
   margin-top: 20px;
   text-transform: capitalize;
+}
+
+.CircularProgressbar.progressbar .CircularProgressbar-text {
+  fill: var(--blue);
+}
+.CircularProgressbar.progressbar .CircularProgressbar-path {
+  stroke: var(--blue);
+}
+.CircularProgressbar.progressbar .CircularProgressbar-trail {
+  stroke: var(--blue);
+}
+
+.CircularProgressbar.progressbar.recovery .CircularProgressbar-text {
+  fill: var(--green);
+}
+.CircularProgressbar.progressbar.recovery .CircularProgressbar-path {
+  stroke: var(--green);
+}
+.CircularProgressbar.progressbar.recovery .CircularProgressbar-trail {
+  stroke: var(--green);
+}
+
+.CircularProgressbar.progressbar.done .CircularProgressbar-text {
+  fill: var(--greyPink);
+}
+.CircularProgressbar.progressbar.done .CircularProgressbar-path {
+  stroke: var(--greyPink);
+}
+.CircularProgressbar.progressbar.done .CircularProgressbar-trail {
+  stroke: var(--greyPink);
 }

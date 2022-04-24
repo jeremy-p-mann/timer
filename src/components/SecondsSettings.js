@@ -3,7 +3,7 @@ import "../css/slider.css";
 
 // TODO: refactor to use styled components
 function SecondsSettings({ seconds, setSeconds, mode }) {
-  const className = (mode === 'work') ? 'slider' : 'slider green'
+  const className = (mode === 'work') ? 'slider' : 'slider recovery'
   return (
     <div style={{ textAlign: "center" }}>
       <label>{mode}: {seconds / 60} minutes</label>
