@@ -5,6 +5,12 @@ import "../css/slider.css";
 function SecondsSettings({ seconds, setSeconds, mode }) {
   const className = mode === "work" ? "slider" : "slider recovery";
 
+  const minutes_display = Math.floor(seconds / 60);
+
+  let seconds_display = seconds % 60;
+  if (seconds_display < 10) seconds_display = "0" + seconds_display;
+  let text = minutes_display + ":" + seconds_display;
+
   const secondsInAValue = 10;
   const maxMin = 10;
   const convertValueToSec = (value) => {
@@ -16,7 +22,7 @@ function SecondsSettings({ seconds, setSeconds, mode }) {
   return (
     <div style={{ textAlign: "center" }}>
       <label>
-        {mode}: {seconds / 60} minutes
+        {mode}: {text}
       </label>
       <ReactSlider
         className={className}
