@@ -12,17 +12,17 @@ import transitionSound from "./sounds/spaghetti.mp3";
 
 function App() {
   const defaultSeconds = {
-    work: 5 * 60,
+    activity: 5 * 60,
     recovery: 1 * 60,
   };
-  const defaultMode = "work";
+  const defaultMode = "activity";
   const defaultSecondsLeft = defaultSeconds[defaultMode];
   const defaultIsPaused = true;
   const defaultNRounds = 2;
 
   const [isPaused, setIsPaused] = useState(defaultIsPaused);
   const [nRounds, setNRounds] = useState(defaultNRounds);
-  const [workSeconds, setWorkSeconds] = useState(defaultSeconds.work);
+  const [activitySeconds, setActivitySeconds] = useState(defaultSeconds.activity);
   const [recoverySeconds, setRecoverySeconds] = useState(defaultSeconds.recovery);
   const [mode, setMode] = useState(defaultMode);
   const [secondsLeft, setSecondsLeft] = useState(defaultSecondsLeft);
@@ -45,9 +45,9 @@ function App() {
         });
       }
       setMode((m) => {
-        return m === "work" ? "recovery" : "work";
+        return m === "activity" ? "recovery" : "activity";
       });
-      modeRef.current = modeRef.current === "work" ? "recovery" : "work";
+      modeRef.current = modeRef.current === "activity" ? "recovery" : "activity";
       play();
     }
   }, [secondsLeft, play]);
@@ -74,26 +74,26 @@ function App() {
   // When the mode changes, change the total seconds to
   // the total and current seconds to whaever the mode is
   useEffect(() => {
-    const newSeconds = mode === "work" ? workSeconds : recoverySeconds;
+    const newSeconds = mode === "activity" ? activitySeconds : recoverySeconds;
     setTotalSeconds(newSeconds);
     totalSecondsRef.current = newSeconds;
     setSecondsLeft(newSeconds);
     return;
-  }, [mode, workSeconds, recoverySeconds]);
+  }, [mode, activitySeconds, recoverySeconds]);
   const reset = () => {
-    setMode("work");
-    setSecondsLeft(workSeconds);
+    setMode("activity");
+    setSecondsLeft(activitySeconds);
     setNRoundsLeft(nRounds);
   };
 
   // the reset button should:
   // change the number of rounds left to nRounds
-  // change the mode to work (which will change the seconds left via cascade)
+  // change the mode to activity (which will change the seconds left via cascade)
   return (
     <main>
       <SecondsProgressIcon
         secondsLeft={secondsLeft}
-        workSeconds={workSeconds}
+        activitySeconds={activitySeconds}
         recoverySeconds={recoverySeconds}
         mode={mode}
         nRoundsLeft={nRoundsLeft}
@@ -104,13 +104,13 @@ function App() {
         setMode={setMode}
         setSecondsLeft={setSecondsLeft}
         setNRoundsLeft={setNRoundsLeft}
-        workSeconds={workSeconds}
+        activitySeconds={activitySeconds}
         nRounds={nRounds}
       />
       <SecondsSettings
-        seconds={workSeconds}
-        setSeconds={setWorkSeconds}
-        mode="work"
+        seconds={activitySeconds}
+        setSeconds={setActivitySeconds}
+        mode="activity"
       />
       <SecondsSettings
         seconds={recoverySeconds}

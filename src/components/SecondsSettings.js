@@ -3,7 +3,7 @@ import "../css/slider.css";
 
 // TODO: refactor to use styled components
 function SecondsSettings({ seconds, setSeconds, mode }) {
-  const className = mode === "work" ? "slider" : "slider recovery";
+  const className = mode === "recovery" ? "slider" : "slider recovery";
 
   const minutes_display = Math.floor(seconds / 60);
 

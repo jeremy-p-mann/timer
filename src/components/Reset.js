@@ -2,12 +2,12 @@ function Reset({
   setMode,
   setSecondsLeft,
   setNRoundsLeft,
-  workSeconds,
+  activitySeconds,
   nRounds,
 }) {
   const reset = () => {
-    setMode("work");
-    setSecondsLeft(workSeconds);
+    setMode("activity");
+    setSecondsLeft(activitySeconds);
     setNRoundsLeft(nRounds);
   };
   return (
