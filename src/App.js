@@ -22,8 +22,12 @@ function App() {
 
   const [isPaused, setIsPaused] = useState(defaultIsPaused);
   const [nRounds, setNRounds] = useState(defaultNRounds);
-  const [activitySeconds, setActivitySeconds] = useState(defaultSeconds.activity);
-  const [recoverySeconds, setRecoverySeconds] = useState(defaultSeconds.recovery);
+  const [activitySeconds, setActivitySeconds] = useState(
+    defaultSeconds.activity
+  );
+  const [recoverySeconds, setRecoverySeconds] = useState(
+    defaultSeconds.recovery
+  );
   const [mode, setMode] = useState(defaultMode);
   const [secondsLeft, setSecondsLeft] = useState(defaultSecondsLeft);
 
@@ -47,7 +51,8 @@ function App() {
       setMode((m) => {
         return m === "activity" ? "recovery" : "activity";
       });
-      modeRef.current = modeRef.current === "activity" ? "recovery" : "activity";
+      modeRef.current =
+        modeRef.current === "activity" ? "recovery" : "activity";
       play();
     }
   }, [secondsLeft, play]);
@@ -97,9 +102,10 @@ function App() {
         recoverySeconds={recoverySeconds}
         mode={mode}
         nRoundsLeft={nRoundsLeft}
+        isPaused={isPaused}
+        setIsPaused={setIsPaused}
       />
       <RoundsProgressIcon nRounds={nRounds} nRoundsLeft={nRoundsLeft} />
-      <PausePlayButton isPaused={isPaused} setIsPaused={setIsPaused} />
       <Reset
         setMode={setMode}
         setSecondsLeft={setSecondsLeft}

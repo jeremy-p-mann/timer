@@ -1,5 +1,9 @@
-import { CircularProgressbar } from "react-circular-progressbar";
+import {
+  CircularProgressbar,
+  CircularProgressbarWithChildren,
+} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import PausePlayButton from "./PausePlayButton";
 
 const SecondsProgressIcon = ({
   mode,
@@ -7,6 +11,8 @@ const SecondsProgressIcon = ({
   recoverySeconds,
   secondsLeft,
   nRoundsLeft,
+  isPaused,
+  setIsPaused,
 }) => {
   let className = mode === "recovery" ? "progressbar" : "progressbar recovery";
 
@@ -24,12 +30,19 @@ const SecondsProgressIcon = ({
   }
 
   return (
-    <CircularProgressbar
-      value={percentage}
-      text={text}
-      className={className}
-      counterClockwise={true}
-    />
+      <CircularProgressbarWithChildren
+        value={percentage}
+        text={text}
+        className={className}
+        counterClockwise={true}
+      >
+              <p></p> 
+              <p></p> 
+              <p></p> 
+              <p></p> 
+              <p></p> 
+        <PausePlayButton isPaused={isPaused} setIsPaused={setIsPaused} />
+      </CircularProgressbarWithChildren>
   );
 };
 
