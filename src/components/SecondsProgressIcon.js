@@ -4,13 +4,13 @@ import "react-circular-progressbar/dist/styles.css";
 const SecondsProgressIcon = ({
   mode,
   workSeconds,
-  restSeconds,
+  recoverySeconds,
   secondsLeft,
   nRoundsLeft,
 }) => {
   let className = mode === "work" ? "progressbar" : "progressbar recovery";
 
-  const totalSeconds = mode === "work" ? workSeconds : restSeconds;
+  const totalSeconds = mode === "work" ? workSeconds : recoverySeconds;
   let percentage = Math.round((secondsLeft / totalSeconds) * 100);
 
   const minutes_display = Math.floor(secondsLeft / 60);

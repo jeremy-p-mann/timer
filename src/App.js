@@ -13,7 +13,7 @@ import transitionSound from "./sounds/spaghetti.mp3";
 function App() {
   const defaultSeconds = {
     work: 5 * 60,
-    rest: 1 * 60,
+    recovery: 1 * 60,
   };
   const defaultMode = "work";
   const defaultSecondsLeft = defaultSeconds[defaultMode];
@@ -23,7 +23,7 @@ function App() {
   const [isPaused, setIsPaused] = useState(defaultIsPaused);
   const [nRounds, setNRounds] = useState(defaultNRounds);
   const [workSeconds, setWorkSeconds] = useState(defaultSeconds.work);
-  const [restSeconds, setRestSeconds] = useState(defaultSeconds.rest);
+  const [recoverySeconds, setRecoverySeconds] = useState(defaultSeconds.recovery);
   const [mode, setMode] = useState(defaultMode);
   const [secondsLeft, setSecondsLeft] = useState(defaultSecondsLeft);
 
@@ -39,15 +39,15 @@ function App() {
   // play sound, change mode, decrement sess
   useEffect(() => {
     if (secondsLeft === 0) {
-      if (modeRef.current === "rest") {
+      if (modeRef.current === "recovery") {
         setNRoundsLeft((n) => {
           return n - 1;
         });
       }
       setMode((m) => {
-        return m === "work" ? "rest" : "work";
+        return m === "work" ? "recovery" : "work";
       });
-      modeRef.current = modeRef.current === "work" ? "rest" : "work";
+      modeRef.current = modeRef.current === "work" ? "recovery" : "work";
       play();
     }
   }, [secondsLeft, play]);
@@ -74,14 +74,13 @@ function App() {
   // When the mode changes, change the total seconds to
   // the total and current seconds to whaever the mode is
   useEffect(() => {
-    const newSeconds = mode === "work" ? workSeconds : restSeconds;
+    const newSeconds = mode === "work" ? workSeconds : recoverySeconds;
     setTotalSeconds(newSeconds);
     totalSecondsRef.current = newSeconds;
     setSecondsLeft(newSeconds);
     return;
-  }, [mode, workSeconds, restSeconds]);
+  }, [mode, workSeconds, recoverySeconds]);
   const reset = () => {
-    console.log("Rest");
     setMode("work");
     setSecondsLeft(workSeconds);
     setNRoundsLeft(nRounds);
@@ -95,7 +94,7 @@ function App() {
       <SecondsProgressIcon
         secondsLeft={secondsLeft}
         workSeconds={workSeconds}
-        restSeconds={restSeconds}
+        recoverySeconds={recoverySeconds}
         mode={mode}
         nRoundsLeft={nRoundsLeft}
       />
@@ -114,9 +113,9 @@ function App() {
         mode="work"
       />
       <SecondsSettings
-        seconds={restSeconds}
-        setSeconds={setRestSeconds}
-        mode="rest"
+        seconds={recoverySeconds}
+        setSeconds={setRecoverySeconds}
+        mode="recovery"
       />
       <NRoundsSettings nRounds={nRounds} SetNRounds={setNRounds} />
       <SecondsSettings
