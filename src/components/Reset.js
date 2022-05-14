@@ -4,11 +4,13 @@ function Reset({
   setNRoundsLeft,
   activitySeconds,
   nRounds,
+    setIsPaused,
 }) {
   const reset = () => {
     setMode("activity");
     setSecondsLeft(activitySeconds);
     setNRoundsLeft(nRounds);
+    setIsPaused(true)
   };
   return (
     <div>

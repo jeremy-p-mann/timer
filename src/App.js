@@ -85,11 +85,6 @@ function App() {
     setSecondsLeft(newSeconds);
     return;
   }, [mode, activitySeconds, recoverySeconds]);
-  const reset = () => {
-    setMode("activity");
-    setSecondsLeft(activitySeconds);
-    setNRoundsLeft(nRounds);
-  };
 
   // the reset button should:
   // change the number of rounds left to nRounds
@@ -112,6 +107,7 @@ function App() {
         setNRoundsLeft={setNRoundsLeft}
         activitySeconds={activitySeconds}
         nRounds={nRounds}
+        setIsPaused={setIsPaused}
       />
       <SecondsSettings
         seconds={activitySeconds}
