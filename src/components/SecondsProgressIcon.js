@@ -16,7 +16,7 @@ const SecondsProgressIcon = ({
 }) => {
   let className = mode === "recovery" ? "progressbar" : "progressbar recovery";
 
-  const totalSeconds = mode === "recovery" ? activitySeconds : recoverySeconds;
+  const totalSeconds = mode === "recovery" ? recoverySeconds : activitySeconds;
   let percentage = Math.round((secondsLeft / totalSeconds) * 100);
 
   const minutes_display = Math.floor(secondsLeft / 60);
@@ -29,6 +29,11 @@ const SecondsProgressIcon = ({
     text = "done";
   }
 
+    console.log('---------------')
+    console.log('percentage', percentage)
+    console.log('seconds left', secondsLeft)
+    console.log('seconds total', totalSeconds)
+    console.log('---------------')
   return (
       <CircularProgressbarWithChildren
         value={percentage}
