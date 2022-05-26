@@ -12,8 +12,8 @@ import transitionSound from "./sounds/spaghetti.mp3";
 
 function App() {
   const defaultSeconds = {
-    activity: 5 * 60,
-    recovery: 1 * 60,
+    activity: 1 * 60,
+    recovery: 1/6 * 60,
   };
   const defaultMode = "activity";
   const defaultSecondsLeft = defaultSeconds[defaultMode];
